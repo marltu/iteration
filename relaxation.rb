@@ -65,6 +65,8 @@ def relaxation_solve(a, b, x, e, w)
         z = Vector.max(Vector.abs(Vector.sub(x, xp)))    #paklaida
         zn = Vector.sub(a * x, b)    #netiktis?
         k += 1
+
+        # there are two ways checking diff...
         if z < e
             return [xp, k, z, Vector.max(Vector.abs(zn))]
         end
