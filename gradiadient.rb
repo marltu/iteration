@@ -32,12 +32,12 @@ def gradient_solve(a, b, x, e)
     while k < 10 do
 
         rk = a * pk
-        rkpk = Vector.vmul(rk, pk) # iteracinis parametras
+        rkpk = Vector.vmul(rk, pk)
         zkzk = Vector.vmul(zk, zk) 
         tk = zkzk/rkpk
 
         x.each_with_index do |xk, i|
-            x[i] = xk - tk*pk[i] # tk pk
+            x[i] = xk - tk*pk[i]
         end
 
         print "x: #{k} #{x.inspect}\n"
