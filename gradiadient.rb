@@ -29,7 +29,7 @@ def gradient_solve(a, b, x, e)
     pk = Vector.mul(b, -1)
     zk = pk
 
-    while k < 10 do
+    while k < 1000 do
 
         rk = a * pk
         rkpk = Vector.vmul(rk, pk)
