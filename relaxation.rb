@@ -28,7 +28,7 @@ w = 0.5
 
 def relaxation_solve(a, b, x, e, w)
     
-    if not a.diagonal_always_max? or a.symetrical?
+    if not a.diagonal_always_max? or a.symmetrical?
         raise "Matrix does not converge"
     end
     

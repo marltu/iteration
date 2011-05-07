@@ -90,10 +90,10 @@ class GenericMatrix
         return true
     end
 
-    def symetrical?
+    def symmetrical?
         @matrix.each_with_index do |row, i|
             @matrix.each_with_index do |value, j|
-                if @matrix[i, j] != @matrix[j, i]
+                if @matrix[i][j] != @matrix[j][i]
                     return false
                 end
             end

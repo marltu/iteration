@@ -24,9 +24,14 @@ e = 0.0001
 x = [0]*a.size_y
 
 def gradient_solve(a, b, x, e)
+
+    if not a.symmetrical?
+        raise "Matrix is not symmetrical"
+    end
+
     k = 0
 
-    pk = Vector.mul(b, -1)
+    pk = Vector.sub((a * x), b)
     zk = pk
 
     while k < 1000 do
