@@ -41,6 +41,11 @@ class Vector
             end
         end
 
+        def div(v, k)
+            v.each.collect do |val|
+                val / k
+            end
+        end
         def vmul(v1, v2)
             sum = 0.0
             v1.each_with_index do |val, i|
@@ -48,6 +53,19 @@ class Vector
             end
 
             return sum
+        end
+
+        def norm(v)
+            return Vector.max(Vector.abs(v))
+        end
+
+        def norm2(v)
+            sum = 0
+            v.each do |val|
+                sum += val**2
+            end
+
+            return Math.sqrt(sum)
         end
     end
 end

@@ -89,4 +89,30 @@ describe GenericMatrix do
         c = a * b
         c.should == [8, 18]
     end
+
+    it "should be diagonally max for specific matrix" do
+        a = GenericMatrix.new([
+            [7, 2, 4],
+            [2, 7, 4],
+            [4, 2, 7]
+        ]).diagonally_dominant?.should be_true
+    end
+
+
+    it "should be not diagonally max for specific matrix" do
+        a = GenericMatrix.new([
+            [7, 2, 4],
+            [2, 7, 4],
+            [-5, 5, 7]
+        ]).diagonally_dominant?.should be_false
+    end
+
+    it "should be symmetrical" do
+        d = GenericMatrix.new([
+            [ 1.342,  0.202, -0.599,  0.432],
+            [ 0.202,  1.342,  0.202, -0.599],
+            [-0.599,  0.202,  1.342,  0.202],
+            [ 0.432, -0.599,  0.202,  1.342] 
+        ]).diagonally_dominant?.should be_true
+    end
 end

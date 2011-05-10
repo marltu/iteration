@@ -69,12 +69,12 @@ class TridiagonalMatrix < GenericMatrix
         return true
     end
 
-    def solve(d)
+    def solve(d, force = false)
         if d.length != @matrix.length
             raise ArgumentError, "invalid number of parameters given. Got #{d.length} but should be #{@matrix.length}"
         end
 
-        raise "Matrix is not diagonally dominant, can't solve (sufficient condition)" if not diagonally_dominant?
+        raise "Matrix is not diagonally dominant, can't solve (sufficient condition)" if not force and not diagonally_dominant?
 
         return tdma(d)
     end

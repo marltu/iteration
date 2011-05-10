@@ -78,12 +78,21 @@ class GenericMatrix
         return @matrix[0].size
     end
 
-    def diagonal_always_max?
+    def diagonally_dominant?
+        return (this_diagonally_dominant? and transpose.this_diagonally_dominant?)
+    end
+
+    def this_diagonally_dominant?
         @matrix.each_with_index do |row, i|
+            sum = 0
             row.each_with_index do |value, j|
                 if i != j and value.abs >= @matrix[i][i]
-                    return false
+                    sum += value.abs
                 end
+            end
+
+            if (sum >= @matrix[i][i].abs)
+                return false
             end
         end
 
@@ -100,5 +109,21 @@ class GenericMatrix
         end
 
         return true
+    end
+
+    def transpose
+        m = GenericMatrix.new(size_y)
+
+        @matrix.each_with_index do |row, i|
+            @matrix.each_with_index do |value, j|
+                m.set(i, j, get(j, i))
+            end
+        end
+
+        return m
+    end
+
+    def to_tridiagonal
+        TridiagonalMatrix.new(@matrix)
     end
 end
