@@ -93,7 +93,7 @@ describe GenericMatrix do
     it "should be diagonally max for specific matrix" do
         a = GenericMatrix.new([
             [7, 2, 4],
-            [2, 7, 4],
+            [2, 7, 2],
             [4, 2, 7]
         ]).diagonally_dominant?.should be_true
     end
@@ -103,8 +103,19 @@ describe GenericMatrix do
         a = GenericMatrix.new([
             [7, 2, 4],
             [2, 7, 4],
-            [-5, 5, 7]
+            [-5, 6, 7]
         ]).diagonally_dominant?.should be_false
+    end
+
+    it "should transpose" do
+        a = GenericMatrix.new([
+            [7, 2, 4],
+            [2, 7, 4],
+            [-5, 6, 7]
+        ]).transpose
+
+        a.get(0, 1).should == 2
+
     end
 
     it "should be symmetrical" do

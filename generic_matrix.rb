@@ -86,7 +86,7 @@ class GenericMatrix
         @matrix.each_with_index do |row, i|
             sum = 0
             row.each_with_index do |value, j|
-                if i != j and value.abs >= @matrix[i][i]
+                if i != j 
                     sum += value.abs
                 end
             end
