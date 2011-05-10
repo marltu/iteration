@@ -10,6 +10,7 @@ def gradient_solve(a, b, x, e)
 
     k = 0
 
+    # A * x - b (b = f)
     pk = Vector.sub((a * x), b)
     zk = pk
 
@@ -32,6 +33,7 @@ def gradient_solve(a, b, x, e)
         if zk1zk1 < e**2 
             return x
         else
+            # beta = (zk1, zk1) / (zk, zk)
             betak = zk1zk1/zkzk
             pk1 = Vector.add(zk1, Vector.mul(pk, betak))
 
