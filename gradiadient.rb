@@ -21,10 +21,10 @@ d = GenericMatrix.new([
 
 a = d + kc
 
-e = 0.00000001
+e = 0.000000000000001
 x = [0]*a.size_y
 
-
+print "p: #{e}\n"
 print gradient_solve(a, b, x, e).inspect
 print "\n"
 

@@ -2,7 +2,7 @@ require "./generic_matrix"
 require "./vector"
 require "./methods"
 # student number
-k = 12
+k = 39
 
 b = [1.941, -0.23, -1.941, 0.23]
 c = GenericMatrix.new([
@@ -21,11 +21,13 @@ d = GenericMatrix.new([
     [ 0.432, -0.599,  0.202,  1.342] 
 ])
 
+
+
 a = d + kc
 
 x = [0]*a.size_y
-p = 0.00001
-w = 1.246
+p = 0.0001
+w = 1.5
 
 result = relaxation_solve(a, b, x, p, w)
 print "\nresult: #{result.inspect}\n"

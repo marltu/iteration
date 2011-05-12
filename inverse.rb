@@ -29,10 +29,13 @@ a = t + kc
 # precission
 e = 0.00001
 
+print a.inspect
+print "\n"
+
 # initial lambda
-lambdak = 4
+lambdak = 2
 # initial x
-xk = [1.0, 1.0, 1.0, 1.0]
+xk = [1, 0, 0, 0]
 
 # generates identity matrix (diagonally 1) for size n
 def identity_matrix(n)
@@ -68,7 +71,7 @@ def eighenvector(a, lambdak, xk, e)
         yk1 = gradient_solve(a + (identity_matrix(a.size_y)*lambdak*-1), xk, yk, e)
 
         # find new eighenvector
-        # xk1 = xk1 / ||xk1||2 (second norm)
+        # xk1 = yk1 / ||yk1||2 (second norm)
         xk1 = Vector.div(yk1, Vector.norm2(yk1))
 
         # find new eighenvalue
@@ -77,7 +80,7 @@ def eighenvector(a, lambdak, xk, e)
         # calculate precission using
         # || xk1 - xk ||
         diff = Vector.norm(Vector.sub(xk1, xk))
-        print "/// #{i}\n lambda: #{lambdak1} \n diff: #{diff} \n x: #{xk1.inspect} \n"
+        print "/// #{i}\n lambda: #{lambdak1} \n diff: #{diff} lambdadiff: #{(lambdak1 - lambdak).abs}\n x: #{xk1.inspect}\n"
 
         # if diff is ~= 2, we need to change vector direction
         if (diff >= 1.9 and diff <= 2.1)
@@ -85,7 +88,7 @@ def eighenvector(a, lambdak, xk, e)
             xk1 = Vector.mul(xk1, -1)
         end
 
-        # max difference || xk1 - xk1 || or | lambdak1 - lambdak |
+        # max difference || xk1 - xk || or | lambdak1 - lambdak |
         diff = Vector.max([diff, (lambdak1 - lambdak).abs])
 
         # set newly found eighenvector

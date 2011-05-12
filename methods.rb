@@ -25,11 +25,11 @@ def gradient_solve(a, b, x, e)
             x[i] = xk - tk*pk[i]
         end
 
-        print "x: #{k} #{x.inspect}\n"
-
         zk1 = Vector.sub(zk,Vector.mul(rk, tk))
         zk1zk1 = Vector.vmul(zk1, zk1)
 
+        print "x: #{k} #{x.inspect} #{zk1zk1} #{pk}\n"
+        
         if zk1zk1 < e**2 
             return x
         else
@@ -43,6 +43,7 @@ def gradient_solve(a, b, x, e)
         end
 
     end
+    raise "Unable to solve in #{k} iterations"
 end
 
 
@@ -56,7 +57,7 @@ def relaxation_solve(a, b, x, e, w)
     if (n != a.size_x or b.size != a.size_y)
         raise "Relaxation.solve: blogi parametrai."
     end
-    
+
     maxloop = 10000
     xp = [0.0]*n
     z = 0.0
